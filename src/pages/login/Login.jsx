@@ -41,9 +41,9 @@ function Login() {
           showConfirmButton: false,
         });
 
-        // setTimeout(() => {
-        //   navigate("/");
-        // }, 2000);
+        setTimeout(() => {
+          navigate("/list-checklist");
+        }, 2000);
       }
     } catch (error) {
       console.error("asa", error?.response?.data?.errorMessage);
