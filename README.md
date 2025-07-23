@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Untuk final aplikasi ada di branch develop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Namun hasil test dalam mengikuti kegiatan test coding ada branch main, branch develop hanya menyelsaikan project yang telat dari jadwal yang telah di tentukan
+
+## Branch develop hanya menyelsaikan project yang telat lewat dari jadwal yang telah di tentukan
 
 ## Available Scripts
 
