@@ -32,8 +32,6 @@ function Login() {
         const token = response?.data?.data?.token;
         localStorage.setItem("accessToken", token);
 
-        console.log(token);
-
         Swal.fire({
           title: response?.data?.message || "Anda berhasil Login",
           icon: "success",
@@ -59,14 +57,14 @@ function Login() {
   };
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8  ">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-[170px] bg-w">
-        <h1 className="font-poppins mt-15 text-center text-[56px] font-bold  text-[#44444F]">
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-[100px] bg-w">
+        <h1 className="font-poppins mt-15 text-center text-[56px] font-bold text-[#44444F]">
           Sign In
         </h1>
       </div>
       <p
-        className={`font-normal text-[#92929D] text-[16px] text-center mt-[14px] mb-[70px]`}
+        className={`text-[#92929D] text-[16px] text-center mt-[14px] mb-[10px] font-roboto font-normal`}
       >
         Just sign in if you have an account in here. Enjoy our Website
       </p>
@@ -84,12 +82,12 @@ function Login() {
                   autoComplete="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  className="peer w-full px-3 py-2 rounded-lg mb-4 block pb-2.5 pt-4 border bg-transparent border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500 focus:outline-none focus:ring-0 focus:border-[#0062FF]  text-[14px] text-[#44444F]"
                   placeholder=" "
                 />
                 <label
                   htmlFor="username"
-                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute text-[13px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 font-roboto"
                 >
                   Username
                 </label>
@@ -105,12 +103,12 @@ function Login() {
                   autoComplete="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  className="peer w-full px-3 py-2 rounded-lg mb-4 block pb-2.5 pt-4 border bg-transparent border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500 focus:outline-none focus:ring-0 focus:border-[#0062FF] text-[14px] text-[#44444F]"
                   placeholder=" "
                 />
                 <label
                   htmlFor="password"
-                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute text-[13px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 font-roboto"
                 >
                   Enter Password
                 </label>
@@ -120,7 +118,7 @@ function Login() {
             <div>
               <button
                 type="submit"
-                className="flex w-full  cursor-pointer justify-center text-center rounded-[12px] bg-[#0062FF] pt-[15px] pb-[15px] text-[12px] font-medium text-white shadow-xs hover:bg-[#0062FF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0062FF]"
+                className="flex w-full font-poppins cursor-pointer justify-center text-center rounded-[12px] bg-[#0062FF] pt-[15px] pb-[15px] text-[14px] font-medium text-white shadow-xs hover:bg-[#0062FF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0062FF]"
               >
                 Login
               </button>
@@ -129,9 +127,13 @@ function Login() {
         </div>
 
         <div>
-          <p className="text-center mt-[65px] text-[14px] text-[#0062FF] font-normal">
+          <p className="text-center mt-[10px] text-[16px] text-[#92929D] font-normal font-roboto">
             Don't have an account yet?
-            <Link to={"/register"}> Create Account</Link>
+            <Link to={"/register"}>
+              <span className="text-[#0062FF] pl-2 underline italic">
+                Create Account
+              </span>
+            </Link>
           </p>
         </div>
       </div>

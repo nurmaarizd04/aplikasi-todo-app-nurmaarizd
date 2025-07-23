@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import apiClient from "../../../client/ApiClient";
 
-function CreateChecklistItem() {
-  const { id: checklistId } = useParams(); // ambil checklistId dari URL
+function ChecklistItemEdit() {
+  const { checklistId, itemId } = useParams();
   const navigate = useNavigate();
-
   const [itemName, setItemName] = useState("");
 
-  const handleSubmit = async (e) => {
+  const getDataItemCheklisById = async () => {
+    try {
+      const response = await apiClient.get(
+        `/checklist/${checklistId}/item/${itemId}`
+      );
+
+      if (response?.data?.statusCode === 2110) {
+        setItemName(response?.data?.data?.name);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    getDataItemCheklisById();
+  }, []);
+
+  const handleUpdateItem = async (e) => {
     e.preventDefault();
 
     if (!itemName.trim()) {
@@ -18,16 +35,19 @@ function CreateChecklistItem() {
     }
 
     try {
-      const response = await apiClient.post(`/checklist/${checklistId}/item`, {
-        itemName: itemName.trim(),
-      });
+      const response = await apiClient.put(
+        `/checklist/${checklistId}/item/rename/${itemId}`,
+        {
+          itemName,
+        }
+      );
 
-      if (response?.data?.statusCode === 2000) {
-        Swal.fire("Berhasil", "Item berhasil ditambahkan", "success");
+      if (response?.data?.statusCode === 2200) {
+        Swal.fire(response?.data?.message || "Berhasil diupdate", "success");
         navigate(`/checklist/${checklistId}/detail`);
       }
     } catch (error) {
-      Swal.fire("Error", "Terjadi kesalahan saat menambahkan item", "error");
+      console.error(error);
     }
   };
 
@@ -41,10 +61,10 @@ function CreateChecklistItem() {
       </button>
 
       <h1 className="text-2xl font-bold mb-4 text-gray-800">
-        Tambah Item ke Checklist
+        Update Name Item
       </h1>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleUpdateItem} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             Nama Item
@@ -62,11 +82,11 @@ function CreateChecklistItem() {
           type="submit"
           className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
         >
-          Tambah Item
+          Update Item
         </button>
       </form>
     </div>
   );
 }
 
-export default CreateChecklistItem;
+export default ChecklistItemEdit;

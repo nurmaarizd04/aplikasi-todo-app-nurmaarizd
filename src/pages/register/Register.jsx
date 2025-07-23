@@ -39,14 +39,12 @@ function Register() {
           showConfirmButton: false,
         });
 
-        console.log("response", response);
-
-        // setTimeout(() => {
-        //   navigate("/");
-        // }, 2000);
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
       }
     } catch (error) {
-      console.error("asa", error?.response?.data?.errorMessage);
+      console.error("error", error?.response?.data?.errorMessage);
 
       Swal.fire({
         title:
@@ -60,13 +58,13 @@ function Register() {
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8  ">
-      <div className="sm:mx-auto w-full sm:max-w-sm mt-[170px] bg-w">
+      <div className="sm:mx-auto w-full sm:max-w-sm mt-[100px] bg-w">
         <h1 className="font-poppins w-full mt-15 text-center text-[56px] font-bold  text-[#44444F]">
           Register
         </h1>
       </div>
       <p
-        className={`font-normal text-[#92929D] text-[16px] text-center mt-[14px] mb-[70px]`}
+        className={`font-normal font-roboto text-[#92929D] text-[16px] text-center mt-[14px] mb-[10px]`}
       >
         To register an account, please enter the data below.
       </p>
@@ -84,12 +82,12 @@ function Register() {
                   autoComplete="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  className="peer w-full px-3 py-2 rounded-lg mb-4 block pb-2.5 pt-4 border bg-transparent border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500 focus:outline-none focus:ring-0 focus:border-[#0062FF]  text-[14px] text-[#44444F]"
                   placeholder=" "
                 />
                 <label
                   htmlFor="username"
-                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute font-roboto text-[13px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                 >
                   Username
                 </label>
@@ -105,12 +103,12 @@ function Register() {
                   autoComplete="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  className="peer w-full px-3 py-2 rounded-lg mb-4 block pb-2.5 pt-4 border bg-transparent border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500 focus:outline-none focus:ring-0 focus:border-[#0062FF]  text-[14px] text-[#44444F]"
                   placeholder=" "
                 />
                 <label
                   htmlFor="password"
-                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute font-roboto text-[13px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                 >
                   Enter Password
                 </label>
@@ -126,12 +124,12 @@ function Register() {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  className="peer w-full px-3 py-2 rounded-lg mb-4 block pb-2.5 pt-4 border bg-transparent border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500 focus:outline-none focus:ring-0 focus:border-[#0062FF]  text-[14px] text-[#44444F]"
                   placeholder=" "
                 />
                 <label
                   htmlFor="email"
-                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                  className="absolute font-roboto text-[13px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
                 >
                   email
                 </label>
@@ -141,7 +139,7 @@ function Register() {
             <div>
               <button
                 type="submit"
-                className="flex w-full  cursor-pointer justify-center text-center rounded-[12px] bg-[#0062FF] pt-[15px] pb-[15px] text-[12px] font-medium text-white shadow-xs hover:bg-[#0062FF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0062FF]"
+                className="flex w-full font-poppins cursor-pointer justify-center text-center rounded-[12px] bg-[#0062FF] pt-[15px] pb-[15px] text-[14px] font-medium text-white shadow-xs hover:bg-[#0062FF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0062FF]"
               >
                 Register
               </button>
@@ -150,8 +148,13 @@ function Register() {
         </div>
 
         <div>
-          <p className="text-center mt-[65px] text-[14px] text-[#0062FF] font-normal">
-            Already have an Square account? <Link to={"/"}>Log in</Link>
+          <p className="text-center mt-[10px] text-[16px] text-[#92929D] font-normal font-roboto">
+            Don't have an account yet?
+            <Link to={"/"}>
+              <span className="text-[#0062FF] pl-2 underline italic">
+                Login
+              </span>
+            </Link>
           </p>
         </div>
       </div>

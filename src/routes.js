@@ -1,5 +1,7 @@
+import RequireAuth from "./components/RequireAuth";
 import {
   ChecklistDetail,
+  ChecklistItemEdit,
   CreateChecklist,
   CreateChecklistItem,
   ListChecklist,
@@ -18,19 +20,43 @@ const routes = [
   },
   {
     path: "/list-checklist",
-    element: <ListChecklist />,
+    element: (
+      <RequireAuth>
+        <ListChecklist />
+      </RequireAuth>
+    ),
   },
   {
     path: "/list-checklist/create",
-    element: <CreateChecklist />,
+    element: (
+      <RequireAuth>
+        <CreateChecklist />,
+      </RequireAuth>
+    ),
   },
   {
     path: "/checklist/:id/detail",
-    element: <ChecklistDetail />,
+    element: (
+      <RequireAuth>
+        <ChecklistDetail />,
+      </RequireAuth>
+    ),
   },
   {
     path: "/checklist/:id/item/create",
-    element: <CreateChecklistItem />,
+    element: (
+      <RequireAuth>
+        <CreateChecklistItem />,
+      </RequireAuth>
+    ),
+  },
+  {
+    path: "/checklist/:checklistId/item/edit/:itemId",
+    element: (
+      <RequireAuth>
+        <ChecklistItemEdit />,
+      </RequireAuth>
+    ),
   },
 ];
 
