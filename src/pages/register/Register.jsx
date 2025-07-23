@@ -1,0 +1,162 @@
+import React, { useState } from "react";
+import apiClient from "../../client/ApiClient";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+function Register() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // validation
+    if (!username || !email || !password) {
+      Swal.fire({
+        title: "Semua field wajib diisi!",
+        icon: "warning",
+      });
+      return;
+    }
+
+    try {
+      const payload = { username, password, email };
+
+      const response = await apiClient.post("/register", payload);
+
+      if (response.data?.statusCode === 2000) {
+        setUsername("");
+        setPassword("");
+        setEmail("");
+
+        Swal.fire({
+          title: response?.data?.message || "Akun anda berhasil di registrasi",
+          icon: "success",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+
+        console.log("response", response);
+
+        // setTimeout(() => {
+        //   navigate("/");
+        // }, 2000);
+      }
+    } catch (error) {
+      console.error("asa", error?.response?.data?.errorMessage);
+
+      Swal.fire({
+        title:
+          error?.response?.data?.errorMessage ||
+          "Terjadi Permasalahan saat registrasi",
+        icon: "warning",
+        draggable: true,
+      });
+    }
+  };
+
+  return (
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8  ">
+      <div className="sm:mx-auto w-full sm:max-w-sm mt-[170px] bg-w">
+        <h1 className="font-poppins w-full mt-15 text-center text-[56px] font-bold  text-[#44444F]">
+          Register
+        </h1>
+      </div>
+      <p
+        className={`font-normal text-[#92929D] text-[16px] text-center mt-[14px] mb-[70px]`}
+      >
+        To register an account, please enter the data below.
+      </p>
+
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm ">
+        <div className="px-[30px] py-[30px] rounded-[10px] shadow-sm">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* username */}
+            <div>
+              <div className="relative">
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  autoComplete="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  placeholder=" "
+                />
+                <label
+                  htmlFor="username"
+                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                >
+                  Username
+                </label>
+              </div>
+            </div>
+            {/* password */}
+            <div>
+              <div className="relative">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  autoComplete="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  placeholder=" "
+                />
+                <label
+                  htmlFor="password"
+                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                >
+                  Enter Password
+                </label>
+              </div>
+            </div>
+            {/* email */}
+            <div>
+              <div className="relative">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="block px-2.5 pb-2.5 pt-4 w-full text-[12px] text-[#44444F] bg-transparent rounded-lg border-1 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-[#0062FF] focus:outline-none focus:ring-0 focus:border-[#0062FF] peer"
+                  placeholder=" "
+                />
+                <label
+                  htmlFor="email"
+                  className="absolute text-[12px] text-[#44444F] duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-[#0062FF] peer-focus:dark:text-[#0062FF] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+                >
+                  email
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <button
+                type="submit"
+                className="flex w-full  cursor-pointer justify-center text-center rounded-[12px] bg-[#0062FF] pt-[15px] pb-[15px] text-[12px] font-medium text-white shadow-xs hover:bg-[#0062FF] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0062FF]"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <p className="text-center mt-[65px] text-[14px] text-[#0062FF] font-normal">
+            Already have an Square account? <Link to={"/"}>Log in</Link>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Register;
