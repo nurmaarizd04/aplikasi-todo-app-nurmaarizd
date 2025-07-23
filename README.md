@@ -11,23 +11,12 @@
 
 ## 📑 Daftar Isi
 
-- [📦 Todo App - nodewave](#-nodewave-todo---apps)
-  - [🔗 Live Demo](#-live-demo)
+- [📦 React Js Todo App - nodewave](#-react-js-todo---apps)
   - [📑 Daftar Isi](#-daftar-isi)
   - [📁 Struktur Proyek](#-struktur-proyek)
   - [🔧 Prasyarat](#-prasyarat)
   - [🛠️ Setup](#️-setup)
   - [🚀 Menjalankan Aplikasi](#-menjalankan-aplikasi)
-
----
-
-## 🔗 Live Demo
-
-**Aplikasi bisa diakses di:**
-
-```bash
-https://nodewave-todo-test-nurmaarizd.vercel.app/
-```
 
 ---
 
